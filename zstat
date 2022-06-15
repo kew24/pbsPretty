@@ -87,11 +87,11 @@ for my $job (@pbsJobs)
 			if( $jobDetails{"job_state"} =~ /e|c/i) {print color("yellow on_black");}
 			print   sprintf("%-60s", $jobDetails{"Job_Name"}) ;
 			print color("reset") ;
-			print "\t" .  sprintf("%-*s", 10, $jobDetails{"Job_Owner"}) . "\t" . $jobDetails{"job_state"} . "\t";
+			print "\t" .  sprintf("%-*s", 10, substr($jobDetails{"Job_Owner"}, 0, 15)) . "\t" . $jobDetails{"job_state"} . "\t";
 			print $jobDetails{"ctime"} . "\t" unless $jobDetails{"job_state"} =~ /r/i;
 			print " walltime:" . $jobDetails{"resources_used.walltime"} . "\t" if $jobDetails{"job_state"} =~ /r/i;
 
-			print  $jobDetails{"queue"}; 
+			print  substr($jobDetails{"queue"}, 0, 7); 
 			if($jobDetails{"exec_host"}) {print color("green");  print  $jobDetails{"exec_host"};}
 			else {print color("blue");  print  "\tTBD";}
 			print color("reset") . "\t";
