@@ -17,6 +17,12 @@ my $username = $ARGV[0] || $ENV{USER};
 my $pbsQstat = `$PBS_QSTAT`;
 my @pbsJobs = split("Job Id:", $pbsQstat);
 
+# print header
+print color("white bold");
+print "  Job Id\tJob Name\t". sprintf("%-*s", 48);
+print "Username\tState\tWalltime (ctime)\tQueue\tHost\tMem Used\n";
+print color("reset");
+
 for my $job (@pbsJobs)
 {
 
