@@ -88,8 +88,8 @@ for my $job (@pbsJobs)
 			print   sprintf("%-60s", $jobDetails{"Job_Name"}) ;
 			print color("reset") ;
 			print "\t" .  sprintf("%-*s", 10, substr($jobDetails{"Job_Owner"}, 0, 15)) . "\t" . $jobDetails{"job_state"} . "\t";
-			print $jobDetails{"ctime"} . "\t" unless $jobDetails{"job_state"} =~ /r/i;
-			print " walltime:" . $jobDetails{"resources_used.walltime"} . "\t" if $jobDetails{"job_state"} =~ /r/i;
+			print sprintf("%-23s", $jobDetails{"ctime"}) . "\t" unless $jobDetails{"job_state"} =~ /r/i;
+			print sprintf("%-23s", " walltime:" . $jobDetails{"resources_used.walltime"}) . "\t" if $jobDetails{"job_state"} =~ /r/i;
 
 			print  substr($jobDetails{"queue"}, 0, 7); 
 			if($jobDetails{"exec_host"}) {print color("green");  print  $jobDetails{"exec_host"};}
